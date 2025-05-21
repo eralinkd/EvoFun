@@ -1,0 +1,29 @@
+// Color variables
+$primary-color: #1d90f5;
+$secondary-color: #0d6efd;
+$accent-color: #1e88e5;
+$background-color: #1c2c3c;
+$dark-background: #121e2a;
+$text-color: #f8f9fa;
+$light-text: #ffffff;
+$border-color: #2c3e50;
+
+// Size variables
+$header-height: 80px;
+$header-height-scrolled: 60px;
+$container-max-width: 1920px;
+
+// Breakpoints
+$mobile: 576px;
+$tablet: 768px;
+$desktop: 1024px;
+$large-desktop: 1440px;
+
+// Transition variables
+$transition-speed: 0.3s;
+$transition-ease: ease-in-out;
+
+// Z-index layers
+$z-header: 100;
+$z-modal: 200;
+$z-tooltip: 300; 

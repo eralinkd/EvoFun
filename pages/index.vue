@@ -1,0 +1,89 @@
+<template>
+  <div>
+    <div class="hero-banner">
+      <div class="hero-content">
+        <h1 class="hero-title">Welcome to EVO_FUN!</h1>
+        <p class="hero-subtitle">Play your favorite games and try your luck</p>
+        <UIBaseButton>Play now</UIBaseButton>
+      </div>
+    </div>
+    
+    <ImageGallery />
+  </div>
+</template>
+
+<script setup>
+</script>
+
+<style scoped lang="scss">
+@use "~/assets/css/variables.module.scss" as *;
+
+.hero-banner {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgba($dark-background, 0.9) 0%,
+      rgba($background-color, 0.8) 100%
+    );
+    z-index: 1;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        circle at 20% 50%,
+        rgba($primary-color, 0.1) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 30%,
+        rgba($secondary-color, 0.1) 0%,
+        transparent 50%
+      );
+    opacity: 0.6;
+    z-index: 0;
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  color: $light-text;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: $light-text;
+  margin-bottom: 2.5rem;
+  opacity: 0.9;
+}
+</style>
