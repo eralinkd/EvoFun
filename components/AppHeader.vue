@@ -9,9 +9,25 @@
           <li class="nav-item"><a href="#">Games</a></li>
           <li class="nav-item"><a href="#">Rules</a></li>
           <li class="nav-item"><a href="#">Win Calculator</a></li>
-          <li class="nav-item"><NuxtLink to="/login">Login</NuxtLink></li>
+          
+          <!-- Show for non-authenticated users -->
+          <template v-if="!userStore.isAuthenticated">
+            <li class="nav-item"><NuxtLink to="/login">Sign In</NuxtLink></li>
+            <li class="nav-item"><NuxtLink to="/register">Sign Up</NuxtLink></li>
+          </template>
+          
+          <!-- Show for authenticated users -->
+          <template v-else>
+            <li class="nav-item balance-display">
+              <span class="balance-text">Balance: ${{ userStore.userProfile.balance || 0 }}</span>
+            </li>
+            <li class="nav-item"><NuxtLink to="/profile">Profile</NuxtLink></li>
+            <li class="nav-item">
+              <a href="#" @click.prevent="handleLogout" class="logout-link">Logout</a>
+            </li>
+          </template>
+          
           <li class="nav-item"><a href="#">Support</a></li>
-          <li class="nav-item"><a href="#">Personal cabinet</a></li>
         </ul>
       </nav>
     </div>
@@ -20,11 +36,20 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
+import { useUserStore } from "~/stores/userStore";
+import { useAuthStore } from "~/stores/authStore";
 
 const isScrolled = ref(false);
+const userStore = useUserStore();
+const authStore = useAuthStore();
 
 const handleScroll = () => {
   isScrolled.value = window.scrollY > 50;
+};
+
+const handleLogout = async () => {
+  authStore.clearTokens();
+  await navigateTo('/');
 };
 
 onMounted(() => {
@@ -92,6 +117,26 @@ onUnmounted(() => {
     &:hover {
       color: $primary-color;
       opacity: 1;
+    }
+  }
+
+  .logout-link {
+    cursor: pointer;
+    
+    &:hover {
+      color: #ff6b6b !important;
+    }
+  }
+
+  .balance-display {
+    .balance-text {
+      background-color: rgba($primary-color, 0.1);
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba($primary-color, 0.3);
+      color: $primary-color;
+      font-weight: 600;
+      font-size: 14px;
     }
   }
 }

@@ -1,16 +1,16 @@
 <template>
   <div class="login-container">
     <div class="login-form-wrapper">
-      <h1 class="login-title">Log in to your account</h1>
+      <h1 class="login-title">Sign In to Your Account</h1>
 
       <form class="login-form" @submit.prevent="handleLogin">
         <UIBaseInput
-          id="email"
-          v-model="form.email"
-          label="Email"
-          placeholder="Enter your email"
-          type="email"
-          :error="errors.email"
+          id="login"
+          v-model="form.login"
+          label="Login"
+          placeholder="Enter your login"
+          type="text"
+          :error="errors.login"
         />
 
         <UIBaseInput
@@ -26,10 +26,10 @@
           <a href="#" class="forgot-password">Forgot password?</a>
         </div>
 
-        <UIBaseButton class="login-button">Login</UIBaseButton>
+        <UIBaseButton class="login-button">Sign In</UIBaseButton>
 
         <div class="register-link">
-          Don't have an account? <a href="#">Register now</a>
+          Don't have an account? <NuxtLink to="/register">Create Account</NuxtLink>
         </div>
       </form>
     </div>
@@ -37,28 +37,31 @@
 </template>
 
 <script setup>
+import { useAuthStore } from "~/stores/authStore";
+
+const authStore = useAuthStore();
+
 const form = reactive({
-  email: "",
+  login: "",
   password: "",
-  remember: false,
 });
 
 const errors = reactive({
-  email: "",
+  login: "",
   password: "",
 });
 
-const handleLogin = () => {
-  errors.email = "";
+const handleLogin = async () => {
+  errors.login = "";
   errors.password = "";
 
   let isValid = true;
 
-  if (!form.email) {
-    errors.email = "Email is required";
+  if (!form.login) {
+    errors.login = "Login is required";
     isValid = false;
-  } else if (!/\S+@\S+\.\S+/.test(form.email)) {
-    errors.email = "Please enter a valid email";
+  } else if (!/\S+@\S+\.\S+/.test(form.login)) {
+    errors.login = "Please enter a valid login";
     isValid = false;
   }
 
@@ -71,7 +74,7 @@ const handleLogin = () => {
   }
 
   if (isValid) {
-    console.log("Form submitted", form);
+    await authStore.login(form.login, form.password);
   }
 };
 </script>

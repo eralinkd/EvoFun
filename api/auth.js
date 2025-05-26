@@ -4,10 +4,12 @@ const useAuthApi = () => {
   const { $api, $loader, $config } = useNuxtApp();
   const baseUrl = $config.public.API_URL;
 
-  const register = async (data) => {
+  const postRegister = async (data) => {
     $loader.show();
     try {
-      const response = await $api.post("/auth/register/", data);
+      const response = await axios.post(`${baseUrl}/auth/register/`, data, {
+        withCredentials: true,
+      });
       return response;
     } catch (error) {
       console.error(error);
@@ -22,8 +24,8 @@ const useAuthApi = () => {
       const response = await axios.post(`${baseUrl}/auth/login/`, data, {
         withCredentials: true,
       });
-      localStorage.setItem("accessToken", response.data.data.access);
-      localStorage.setItem("refreshToken", response.data.data.refresh);
+      localStorage.setItem("accessToken", response.data.data.token);
+      // localStorage.setItem("refreshToken", response.data.data.refresh);
       return response;
     } catch (error) {
       console.error(error);
@@ -54,8 +56,8 @@ const useAuthApi = () => {
           withCredentials: true,
         }
       );
-      localStorage.setItem("accessToken", response.data.data.access);
-      localStorage.setItem("refreshToken", response.data.data.refresh);
+      localStorage.setItem("accessToken", response.data.data.token);
+      // localStorage.setItem("refreshToken", response.data.data.refresh);
       return response;
     } catch (error) {
       console.error(error);
@@ -63,7 +65,7 @@ const useAuthApi = () => {
   };
 
   return {
-    register,
+    postRegister,
     postLogin,
     logout,
     postRefreshToken,
