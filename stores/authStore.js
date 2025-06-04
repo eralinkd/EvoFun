@@ -6,7 +6,7 @@ import { useShowNotivue } from "~/composables/useNotivue";
 
 export const useAuthStore = defineStore("auth", () => {
   const { postRefreshToken, postLogin, postRegister } = useAuthApi();
-  const { $loader } = useNuxtApp();
+  const nuxtApp = useNuxtApp();
   const userStore = useUserStore();
   const { success, error } = useShowNotivue();
 
@@ -34,7 +34,7 @@ export const useAuthStore = defineStore("auth", () => {
   };
 
   const login = async (login, pass) => {
-    $loader.show();
+    nuxtApp.$loader.show();
     try {
       const response = await postLogin({ login, pass });
       if (response) {
@@ -55,17 +55,17 @@ export const useAuthStore = defineStore("auth", () => {
       error(err.response?.data?.message || "Error signing in");
       throw err;
     } finally {
-      $loader.hide();
+      nuxtApp.$loader.hide();
     }
   };
 
   const register = async (data) => {
-    $loader.show();
+    nuxtApp.$loader.show();
     try {
       const response = await postRegister(data);
 
-      if (response.data) {
-        success("Registration successful! You can now sign in.");
+      if (response.status === 201) {
+        success("Registration successful! You can now log in.");
 
         // Redirect to login page
         await navigateTo("/login");
@@ -77,7 +77,7 @@ export const useAuthStore = defineStore("auth", () => {
       error(err.response?.data?.message || "Registration error");
       throw err;
     } finally {
-      $loader.hide();
+      nuxtApp.$loader.hide();
     }
   };
 

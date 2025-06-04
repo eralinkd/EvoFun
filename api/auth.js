@@ -1,11 +1,11 @@
-import { useNuxtApp } from "#app";
 import axios from "axios";
+
 const useAuthApi = () => {
-  const { $api, $loader, $config } = useNuxtApp();
-  const baseUrl = $config.public.API_URL;
+  const nuxtApp = useNuxtApp();
+  const baseUrl = nuxtApp.$config.public.API_URL;
 
   const postRegister = async (data) => {
-    $loader.show();
+    nuxtApp.$loader.show();
     try {
       const response = await axios.post(`${baseUrl}/auth/register`, data, {
         withCredentials: true,
@@ -14,12 +14,12 @@ const useAuthApi = () => {
     } catch (error) {
       console.error(error);
     } finally {
-      $loader.hide();
+      nuxtApp.$loader.hide();
     }
   };
 
   const postLogin = async (data) => {
-    $loader.show();
+    nuxtApp.$loader.show();
     try {
       const response = await axios.post(`${baseUrl}/auth/login`, data, {
         withCredentials: true,
@@ -30,16 +30,15 @@ const useAuthApi = () => {
     } catch (error) {
       console.error(error);
     } finally {
-      $loader.hide();
+      nuxtApp.$loader.hide();
     }
   };
 
-  const logout = async () => {
+  const logout = () => {
     try {
-      const response = await $api.post("/auth/logout/");
       localStorage.removeItem("accessToken");
-      localStorage.removeItem("refreshToken");
-      return response;
+      // localStorage.removeItem("refreshToken");
+      navigateTo("/");
     } catch (error) {
       console.error(error);
     }

@@ -1,12 +1,12 @@
 import { defineStore } from "pinia";
 import { ref, computed } from "vue";
-import useUserApi from "~/api/user";
+import { useUserApi } from "~/api/user";
 import { useShowNotivue } from "~/composables/useNotivue";
 
 export const useUserStore = defineStore("user", () => {
   const { getUser, updateUser } = useUserApi();
   const { success, error } = useShowNotivue();
-  
+
   const userId = ref(null);
   const nickName = ref(null);
   const userProfile = ref({
@@ -16,21 +16,16 @@ export const useUserStore = defineStore("user", () => {
     nickname: "",
     phoneNumber: "",
     email: "",
-    balance: 0
+    balance: 0,
   });
 
-  // Инициализация данных из localStorage только на клиенте
-  if (process.client) {
-    userId.value = localStorage.getItem("userId") || null;
-    nickName.value = localStorage.getItem("nickName") || null;
-  }
+  userId.value = localStorage.getItem("userId") || null;
+  nickName.value = localStorage.getItem("nickName") || null;
 
-  const isAuthenticated = computed(() => {
-    if (process.client) {
-      return !!localStorage.getItem("accessToken");
-    }
-    return false;
-  });
+  const isAuthenticated = () => {
+    const accessToken = localStorage.getItem("accessToken");
+    return !!accessToken;
+  };
 
   const setUserData = (userIdValue, nickNameValue) => {
     userId.value = userIdValue;
@@ -53,7 +48,7 @@ export const useUserStore = defineStore("user", () => {
       nickname: "",
       phoneNumber: "",
       email: "",
-      balance: 0
+      balance: 0,
     };
     localStorage.removeItem("userId");
     localStorage.removeItem("nickName");
@@ -99,4 +94,4 @@ export const useUserStore = defineStore("user", () => {
     fetchUserProfile,
     updateUserProfile,
   };
-}); 
+});

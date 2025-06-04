@@ -5,7 +5,7 @@
       <h1 class="hero-title">Welcome to EVO FUN!</h1>
       <p class="hero-subtitle">Play your favorite games and try your luck</p>
       
-      <div v-if="userStore.isAuthenticated" class="user-welcome">
+      <div v-if="userStore.isAuthenticated()" class="user-welcome">
         <p class="welcome-text">Welcome back, {{ userStore.nickName || 'User' }}!</p>
         <div class="action-buttons">
           <UIBaseButton @click="handlePlayNow">Play now</UIBaseButton>
@@ -32,7 +32,7 @@ const userStore = useUserStore();
 const router = useRouter();
 
 const handlePlayNow = () => {
-  if (userStore.isAuthenticated) {
+  if (userStore.isAuthenticated()) {
     router.push('/games');
   } else {
     router.push('/login');

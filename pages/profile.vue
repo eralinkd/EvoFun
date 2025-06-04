@@ -147,7 +147,6 @@ const errors = reactive({
   email: ""
 });
 
-// Load user profile on component mount
 onMounted(async () => {
   try {
     await userStore.fetchUserProfile();
@@ -157,14 +156,12 @@ onMounted(async () => {
 });
 
 const startEditing = () => {
-  // Copy current profile data to edit form
   editForm.name = userProfile.value.name || "";
   editForm.surname = userProfile.value.surname || "";
   editForm.nickname = userProfile.value.nickname || "";
   editForm.phoneNumber = userProfile.value.phoneNumber || "";
   editForm.email = userProfile.value.email || "";
   
-  // Clear errors
   Object.keys(errors).forEach(key => {
     errors[key] = "";
   });
@@ -174,18 +171,15 @@ const startEditing = () => {
 
 const cancelEditing = () => {
   isEditing.value = false;
-  // Clear form data
   Object.keys(editForm).forEach(key => {
     editForm[key] = "";
   });
-  // Clear errors
   Object.keys(errors).forEach(key => {
     errors[key] = "";
   });
 };
 
 const validateForm = () => {
-  // Clear previous errors
   Object.keys(errors).forEach(key => {
     errors[key] = "";
   });

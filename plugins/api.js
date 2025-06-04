@@ -1,4 +1,3 @@
-import { defineNuxtPlugin } from "#app";
 import axios from "axios";
 import { useAuthStore } from "~/stores/authStore";
 

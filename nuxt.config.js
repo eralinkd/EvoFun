@@ -2,7 +2,6 @@ import tailwindcss from "@tailwindcss/vite";
 import {
   cssConfig,
   modulesConfig,
-  pluginsConfig,
   runtimeEnvConfig,
 } from "./config/main.js";
 
@@ -20,7 +19,6 @@ export default defineNuxtConfig({
     'notivue/animations.css',
   ],
   runtimeConfig: runtimeEnvConfig,
-  plugins: pluginsConfig,
   ssr: false,
   vite: {
     plugins: [tailwindcss()],

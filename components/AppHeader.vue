@@ -8,7 +8,7 @@
           <li class="nav-item"><a href="#">Games</a></li>
           <li class="nav-item"><a href="#">Rules</a></li>
           
-          <template v-if="!userStore.isAuthenticated">
+          <template v-if="!userStore.isAuthenticated()">
             <li class="nav-item"><NuxtLink to="/login">Sign In</NuxtLink></li>
           </template>
           
@@ -44,7 +44,7 @@ const handleScroll = () => {
 
 const handleLogout = async () => {
   authStore.clearTokens();
-  await navigateTo('/');
+  window.location.reload();
 };
 
 onMounted(() => {
