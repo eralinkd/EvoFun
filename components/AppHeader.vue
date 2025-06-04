@@ -5,7 +5,6 @@
       <nav class="nav">
         <ul class="nav-list">
           <li class="nav-item"><NuxtLink to="/">Main</NuxtLink></li>
-          <li class="nav-item"><a href="#">Gallery</a></li>
           <li class="nav-item"><a href="#">Games</a></li>
           <li class="nav-item"><a href="#">Rules</a></li>
           

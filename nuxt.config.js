@@ -25,4 +25,12 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  app: {
+    head: {
+      title: 'Evo Fun Casino',
+      link: [
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon.webp' },
+      ],
+    },
+  },
 });

@@ -8,7 +8,7 @@
       <div v-if="userStore.isAuthenticated" class="user-welcome">
         <p class="welcome-text">Welcome back, {{ userStore.nickName || 'User' }}!</p>
         <div class="action-buttons">
-          <UIBaseButton>Play now</UIBaseButton>
+          <UIBaseButton @click="handlePlayNow">Play now</UIBaseButton>
           <NuxtLink to="/profile">
             <UIBaseButton class="profile-btn">View Profile</UIBaseButton>
           </NuxtLink>
@@ -16,12 +16,12 @@
       </div>
       
       <div v-else class="guest-actions">
-        <UIBaseButton>Play now</UIBaseButton>
+        <UIBaseButton @click="handlePlayNow">Play now</UIBaseButton>
       </div>
     </div>
     </div>
     
-    <ImageGallery />
+    <ImageGallery id="main-images-gallery" />
   </div>
 </template>
 
@@ -29,6 +29,15 @@
 import { useUserStore } from "~/stores/userStore";
 
 const userStore = useUserStore();
+const router = useRouter();
+
+const handlePlayNow = () => {
+  if (userStore.isAuthenticated) {
+    router.push('/games');
+  } else {
+    router.push('/login');
+  }
+};
 </script>
 
 <style scoped lang="scss">
