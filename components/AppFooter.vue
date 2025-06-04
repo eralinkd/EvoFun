@@ -2,14 +2,14 @@
   <footer class="footer">
     <div class="footer-content">
       <div class="footer-logo">
-        <div class="logo">EVO_FUN</div>
+        <NuxtLink to="/" class="logo">EVO FUN</NuxtLink>
         <p class="tagline">Play your favorite games and try your luck</p>
       </div>
       
     </div>
     
     <div class="footer-bottom">
-      <p class="copyright">© {{ new Date().getFullYear() }} EVO_FUN. All rights reserved.</p>
+      <p class="copyright">© {{ new Date().getFullYear() }} EVO FUN. All rights reserved.</p>
       <div class="social-links">
         <a href="#" class="social-link">Telegram</a>
         <a href="#" class="social-link">TikTok</a>

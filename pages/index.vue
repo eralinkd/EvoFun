@@ -2,7 +2,7 @@
   <div>
     <div class="hero-banner">
           <div class="hero-content">
-      <h1 class="hero-title">Welcome to EVO_FUN!</h1>
+      <h1 class="hero-title">Welcome to EVO FUN!</h1>
       <p class="hero-subtitle">Play your favorite games and try your luck</p>
       
       <div v-if="userStore.isAuthenticated" class="user-welcome">

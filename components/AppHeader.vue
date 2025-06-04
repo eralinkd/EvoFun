@@ -1,7 +1,7 @@
 <template>
   <header class="header" :class="{ scrolled: isScrolled }">
     <div class="header-content">
-      <div class="logo">EVO_FUN</div>
+      <NuxtLink to="/" class="logo">EVO FUN</NuxtLink>
       <nav class="nav">
         <ul class="nav-list">
           <li class="nav-item"><NuxtLink to="/">Main</NuxtLink></li>
