@@ -1,11 +1,11 @@
 import { useNuxtApp } from "#app";
 
 const useUserApi = () => {
-  const { $api, $loader } = useNuxtApp();
+  const { $api } = useNuxtApp();
 
   const getUser = async () => {
     try {
-      const response = await $api.get("/profile/me/");
+      const response = await $api.get("/profile/me");
       return response;
     } catch (error) {
       console.error(error);
@@ -15,7 +15,7 @@ const useUserApi = () => {
 
   const updateUser = async (data) => {
     try {
-      const response = await $api.patch("/profile/update/", data);
+      const response = await $api.patch("/profile/update", data);
       return response;
     } catch (error) {
       console.error(error);

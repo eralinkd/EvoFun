@@ -37,26 +37,15 @@ export const useAuthStore = defineStore("auth", () => {
     $loader.show();
     try {
       const response = await postLogin({ login, pass });
-
-      if (response.data) {
-        const { token, userId, nickName } = response.data;
-
-        // Save token as accessToken
+      if (response) {
+        const { token, userId, nickName } = response;
         localStorage.setItem("accessToken", token);
-
-        // Save user data in userStore
         userStore.setUserData(userId, nickName);
-
-        // Try to load full user profile
         try {
           await userStore.fetchUserProfile();
         } catch (profileError) {
           console.warn("Could not load user profile:", profileError);
         }
-
-        success("Successfully signed in!");
-
-        // Redirect to home page
         await navigateTo("/");
 
         return response;

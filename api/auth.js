@@ -7,7 +7,7 @@ const useAuthApi = () => {
   const postRegister = async (data) => {
     $loader.show();
     try {
-      const response = await axios.post(`${baseUrl}/auth/register/`, data, {
+      const response = await axios.post(`${baseUrl}/auth/register`, data, {
         withCredentials: true,
       });
       return response;
@@ -21,12 +21,12 @@ const useAuthApi = () => {
   const postLogin = async (data) => {
     $loader.show();
     try {
-      const response = await axios.post(`${baseUrl}/auth/login/`, data, {
+      const response = await axios.post(`${baseUrl}/auth/login`, data, {
         withCredentials: true,
       });
-      localStorage.setItem("accessToken", response.data.data.token);
+      localStorage.setItem("accessToken", response.data.token);
       // localStorage.setItem("refreshToken", response.data.data.refresh);
-      return response;
+      return response.data;
     } catch (error) {
       console.error(error);
     } finally {

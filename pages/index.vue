@@ -5,7 +5,6 @@
       <h1 class="hero-title">Welcome to EVO_FUN!</h1>
       <p class="hero-subtitle">Play your favorite games and try your luck</p>
       
-      <!-- Show different content based on authentication status -->
       <div v-if="userStore.isAuthenticated" class="user-welcome">
         <p class="welcome-text">Welcome back, {{ userStore.nickName || 'User' }}!</p>
         <div class="action-buttons">
