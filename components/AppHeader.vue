@@ -8,15 +8,11 @@
           <li class="nav-item"><a href="#">Gallery</a></li>
           <li class="nav-item"><a href="#">Games</a></li>
           <li class="nav-item"><a href="#">Rules</a></li>
-          <li class="nav-item"><a href="#">Win Calculator</a></li>
           
-          <!-- Show for non-authenticated users -->
           <template v-if="!userStore.isAuthenticated">
             <li class="nav-item"><NuxtLink to="/login">Sign In</NuxtLink></li>
-            <li class="nav-item"><NuxtLink to="/register">Sign Up</NuxtLink></li>
           </template>
           
-          <!-- Show for authenticated users -->
           <template v-else>
             <li class="nav-item balance-display">
               <span class="balance-text">Balance: ${{ userStore.userProfile.balance || 0 }}</span>
@@ -27,7 +23,7 @@
             </li>
           </template>
           
-          <li class="nav-item"><a href="#">Support</a></li>
+          <li class="nav-item"><a href="https://t.me/Yevhen_Matv">Support</a></li>
         </ul>
       </nav>
     </div>
