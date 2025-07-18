@@ -1,5 +1,1 @@
-export const modulesConfig = [
-  "@nuxt/icon",
-  "@nuxt/ui",
-  "@pinia/nuxt"
-];
+export const modulesConfig = ["@nuxt/icon", "@nuxt/ui", "@pinia/nuxt"];

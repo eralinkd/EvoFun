@@ -15,32 +15,44 @@
           <div class="profile-info-grid">
             <div class="info-item">
               <label class="info-label">First Name</label>
-              <div class="info-value">{{ userProfile.name || 'Not specified' }}</div>
+              <div class="info-value">
+                {{ userProfile.name || "Not specified" }}
+              </div>
             </div>
 
             <div class="info-item">
               <label class="info-label">Last Name</label>
-              <div class="info-value">{{ userProfile.surname || 'Not specified' }}</div>
+              <div class="info-value">
+                {{ userProfile.surname || "Not specified" }}
+              </div>
             </div>
 
             <div class="info-item">
               <label class="info-label">Nickname</label>
-              <div class="info-value">{{ userProfile.nickname || 'Not specified' }}</div>
+              <div class="info-value">
+                {{ userProfile.nickname || "Not specified" }}
+              </div>
             </div>
 
             <div class="info-item">
               <label class="info-label">Phone Number</label>
-              <div class="info-value">{{ userProfile.phoneNumber || 'Not specified' }}</div>
+              <div class="info-value">
+                {{ userProfile.phoneNumber || "Not specified" }}
+              </div>
             </div>
 
             <div class="info-item">
               <label class="info-label">Email</label>
-              <div class="info-value">{{ userProfile.email || 'Not specified' }}</div>
+              <div class="info-value">
+                {{ userProfile.email || "Not specified" }}
+              </div>
             </div>
 
             <div class="info-item">
               <label class="info-label">User ID</label>
-              <div class="info-value">{{ userProfile.userId || 'Not specified' }}</div>
+              <div class="info-value">
+                {{ userProfile.userId || "Not specified" }}
+              </div>
             </div>
           </div>
 
@@ -105,9 +117,9 @@
               <UIBaseButton type="submit" class="save-button">
                 Save Changes
               </UIBaseButton>
-              <UIBaseButton 
-                type="button" 
-                @click="cancelEditing" 
+              <UIBaseButton
+                type="button"
+                @click="cancelEditing"
                 class="cancel-button"
               >
                 Cancel
@@ -124,7 +136,7 @@
 import { useUserStore } from "~/stores/userStore";
 
 definePageMeta({
-  middleware: 'auth'
+  middleware: "auth",
 });
 
 const userStore = useUserStore();
@@ -136,7 +148,7 @@ const editForm = reactive({
   surname: "",
   nickname: "",
   phoneNumber: "",
-  email: ""
+  email: "",
 });
 
 const errors = reactive({
@@ -144,14 +156,14 @@ const errors = reactive({
   surname: "",
   nickname: "",
   phoneNumber: "",
-  email: ""
+  email: "",
 });
 
 onMounted(async () => {
   try {
     await userStore.fetchUserProfile();
   } catch (error) {
-    console.error('Failed to load user profile:', error);
+    console.error("Failed to load user profile:", error);
   }
 });
 
@@ -161,26 +173,26 @@ const startEditing = () => {
   editForm.nickname = userProfile.value.nickname || "";
   editForm.phoneNumber = userProfile.value.phoneNumber || "";
   editForm.email = userProfile.value.email || "";
-  
-  Object.keys(errors).forEach(key => {
+
+  Object.keys(errors).forEach((key) => {
     errors[key] = "";
   });
-  
+
   isEditing.value = true;
 };
 
 const cancelEditing = () => {
   isEditing.value = false;
-  Object.keys(editForm).forEach(key => {
+  Object.keys(editForm).forEach((key) => {
     editForm[key] = "";
   });
-  Object.keys(errors).forEach(key => {
+  Object.keys(errors).forEach((key) => {
     errors[key] = "";
   });
 };
 
 const validateForm = () => {
-  Object.keys(errors).forEach(key => {
+  Object.keys(errors).forEach((key) => {
     errors[key] = "";
   });
 
@@ -229,7 +241,7 @@ const handleUpdateProfile = async () => {
     await userStore.updateUserProfile(editForm);
     isEditing.value = false;
   } catch (error) {
-    console.error('Failed to update profile:', error);
+    console.error("Failed to update profile:", error);
   }
 };
 </script>
@@ -430,4 +442,4 @@ const handleUpdateProfile = async () => {
     text-align: center;
   }
 }
-</style> 
+</style>

@@ -9,7 +9,7 @@ export default defineNuxtPlugin(({ $config }) => {
   });
 
   const authStore = useAuthStore();
-  
+
   // For token refresh management
   let isRefreshing = false;
   let refreshSubscribers = [];
@@ -67,13 +67,13 @@ export default defineNuxtPlugin(({ $config }) => {
 
             // Call refresh token endpoint
             const response = await authStore.doRefreshToken();
-            
+
             if (response?.data?.data) {
               // Notify all subscribers about the new token
               onRefreshed(authStore.accessToken);
               $loader.hide();
               isRefreshing = false;
-              
+
               // Create a fresh request with new token
               const newRequest = { ...originalRequest };
               newRequest.headers = {

@@ -2,7 +2,7 @@
   <div class="gallery-section">
     <h2 class="gallery-title">Image Gallery</h2>
     <p class="gallery-subtitle">Explore our collection of images.</p>
-    
+
     <div class="main-swiper-container">
       <swiper
         :modules="modules"
@@ -30,7 +30,11 @@
         @swiper="setThumbsSwiper"
         class="thumbs-swiper"
       >
-        <swiper-slide v-for="(image, index) in images" :key="`thumb-${index}`" class="thumb-slide">
+        <swiper-slide
+          v-for="(image, index) in images"
+          :key="`thumb-${index}`"
+          class="thumb-slide"
+        >
           <img :src="image.src" :alt="image.alt" />
         </swiper-slide>
       </swiper>
@@ -39,12 +43,12 @@
 </template>
 
 <script setup>
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Navigation, Pagination, Thumbs } from 'swiper';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/thumbs';
+import { Swiper, SwiperSlide } from "swiper/vue";
+import { Navigation, Pagination, Thumbs } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/thumbs";
 
 const modules = [Navigation, Pagination, Thumbs];
 
@@ -54,16 +58,16 @@ const setThumbsSwiper = (swiper) => {
 };
 
 const images = ref([
-  { src: '/images/1.jpg', alt: 'Game 1' },
-  { src: '/images/2.jpg', alt: 'Game 2' },
-  { src: '/images/3.jpg', alt: 'Game 3' },
-  { src: '/images/4.jpg', alt: 'Game 4' },
-  { src: '/images/5.jpg', alt: 'Game 5' },
-  { src: '/images/6.jpg', alt: 'Game 6' },
-  { src: '/images/7.jpg', alt: 'Game 7' },
-  { src: '/images/8.jpg', alt: 'Game 8' },
-  { src: '/images/9.jpg', alt: 'Game 9' },
-  { src: '/images/10.jpg', alt: 'Game 10' },
+  { src: "/images/1.jpg", alt: "Game 1" },
+  { src: "/images/2.jpg", alt: "Game 2" },
+  { src: "/images/3.jpg", alt: "Game 3" },
+  { src: "/images/4.jpg", alt: "Game 4" },
+  { src: "/images/5.jpg", alt: "Game 5" },
+  { src: "/images/6.jpg", alt: "Game 6" },
+  { src: "/images/7.jpg", alt: "Game 7" },
+  { src: "/images/8.jpg", alt: "Game 8" },
+  { src: "/images/9.jpg", alt: "Game 9" },
+  { src: "/images/10.jpg", alt: "Game 10" },
 ]);
 </script>
 
@@ -118,7 +122,7 @@ const images = ref([
   height: 0;
   padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
   position: relative;
-  
+
   img {
     position: absolute;
     top: 0;
@@ -147,7 +151,7 @@ const images = ref([
   overflow: hidden;
   opacity: 0.6;
   transition: opacity $transition-speed $transition-ease,
-              border $transition-speed $transition-ease;
+    border $transition-speed $transition-ease;
   cursor: pointer;
   border: 2px solid transparent;
 }
@@ -159,7 +163,7 @@ const images = ref([
 
 .thumb-slide {
   height: 100%;
-  
+
   img {
     width: 100%;
     height: 100%;
@@ -171,7 +175,7 @@ const images = ref([
   .main-swiper-container {
     max-width: 720px;
   }
-  
+
   .thumbs-container {
     max-width: 600px;
   }
@@ -181,23 +185,23 @@ const images = ref([
   .main-swiper-container {
     max-width: 100%;
   }
-  
+
   .thumbs-container {
     max-width: 100%;
   }
-  
+
   .gallery-title {
     font-size: 2rem;
   }
-  
+
   .thumbs-swiper {
     height: 70px;
     padding: 0 20px;
   }
-  
+
   :deep(.thumbs-swiper .swiper-slide) {
     width: 80px;
     height: 60px;
   }
 }
-</style> 
+</style>

@@ -4,7 +4,5 @@
   </div>
 </template>
 <script setup>
-
-const { $loader } = useNuxtApp()
+const { $loader } = useNuxtApp();
 </script>
-

@@ -1,9 +1,5 @@
 import tailwindcss from "@tailwindcss/vite";
-import {
-  cssConfig,
-  modulesConfig,
-  runtimeEnvConfig,
-} from "./config/main.js";
+import { cssConfig, modulesConfig, runtimeEnvConfig } from "./config/main.js";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -13,11 +9,7 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   modules: modulesConfig,
-  css: [
-    ...cssConfig,
-    'notivue/notifications.css',
-    'notivue/animations.css',
-  ],
+  css: [...cssConfig, "notivue/notifications.css", "notivue/animations.css"],
   runtimeConfig: runtimeEnvConfig,
   ssr: false,
   vite: {
@@ -25,10 +17,8 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'Evo Fun Casino',
-      link: [
-        { rel: 'icon', type: 'image/x-icon', href: '/favicon.webp' },
-      ],
+      title: "Evo Fun Casino",
+      link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.webp" }],
     },
   },
 });

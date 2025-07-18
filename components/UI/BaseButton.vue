@@ -1,7 +1,7 @@
 <template>
-  <button 
-    class="base-button" 
-    :class="[variant, { disabled }]" 
+  <button
+    class="base-button"
+    :class="[variant, { disabled }]"
     :disabled="disabled"
     @click="$emit('click')"
   >
@@ -18,8 +18,8 @@ defineProps({
   },
   disabled: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 });
 </script>
 
@@ -37,42 +37,42 @@ defineProps({
   border-radius: 30px;
   cursor: pointer;
   transform: translateY(0);
-  transition: transform $transition-speed $transition-ease, 
-              background-color $transition-speed $transition-ease,
-              box-shadow $transition-speed $transition-ease;
-  
+  transition: transform $transition-speed $transition-ease,
+    background-color $transition-speed $transition-ease,
+    box-shadow $transition-speed $transition-ease;
+
   &:hover:not(.disabled) {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   }
-  
+
   &:active:not(.disabled) {
     transform: translateY(-1px);
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   }
-  
+
   &.primary {
     background-color: $primary-color;
     color: $light-text;
-    
+
     &:hover:not(.disabled) {
       background-color: rgba($primary-color, 0.8);
     }
   }
-  
+
   &.secondary {
     background-color: transparent;
     color: $primary-color;
     border: 2px solid $primary-color;
-    
+
     &:hover:not(.disabled) {
       background-color: rgba($primary-color, 0.1);
     }
   }
-  
+
   &.disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }
 }
-</style> 
+</style>

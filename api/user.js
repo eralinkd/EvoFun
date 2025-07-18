@@ -1,5 +1,4 @@
 export const useUserApi = () => {
-  
   const getUser = async () => {
     const { $loader, $api } = useNuxtApp();
     $loader.show();

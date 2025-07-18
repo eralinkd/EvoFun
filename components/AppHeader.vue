@@ -7,22 +7,28 @@
           <li class="nav-item"><NuxtLink to="/">Main</NuxtLink></li>
           <li class="nav-item"><a href="#">Games</a></li>
           <li class="nav-item"><a href="#">Rules</a></li>
-          
+
           <template v-if="!userStore.isAuthenticated()">
             <li class="nav-item"><NuxtLink to="/login">Sign In</NuxtLink></li>
           </template>
-          
+
           <template v-else>
             <li class="nav-item balance-display">
-              <span class="balance-text">Balance: ${{ userStore.userProfile.balance || 0 }}</span>
+              <span class="balance-text"
+                >Balance: ${{ userStore.userProfile.balance || 0 }}</span
+              >
             </li>
             <li class="nav-item"><NuxtLink to="/profile">Profile</NuxtLink></li>
             <li class="nav-item">
-              <a href="#" @click.prevent="handleLogout" class="logout-link">Logout</a>
+              <a href="#" @click.prevent="handleLogout" class="logout-link"
+                >Logout</a
+              >
             </li>
           </template>
-          
-          <li class="nav-item"><a href="https://t.me/Yevhen_Matv">Support</a></li>
+
+          <li class="nav-item">
+            <a href="https://t.me/Yevhen_Matv">Support</a>
+          </li>
         </ul>
       </nav>
     </div>
@@ -117,7 +123,7 @@ onUnmounted(() => {
 
   .logout-link {
     cursor: pointer;
-    
+
     &:hover {
       color: #ff6b6b !important;
     }

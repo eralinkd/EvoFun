@@ -29,7 +29,8 @@
         <UIBaseButton class="login-button">Sign In</UIBaseButton>
 
         <div class="register-link">
-          Don't have an account? <NuxtLink to="/register">Create Account</NuxtLink>
+          Don't have an account?
+          <NuxtLink to="/register">Create Account</NuxtLink>
         </div>
       </form>
     </div>

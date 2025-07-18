@@ -2,7 +2,6 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
-
 .preloader {
   position: fixed;
   top: 0;

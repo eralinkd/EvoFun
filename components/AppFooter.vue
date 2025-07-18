@@ -5,11 +5,12 @@
         <NuxtLink to="/" class="logo">EVO FUN</NuxtLink>
         <p class="tagline">Play your favorite games and try your luck</p>
       </div>
-      
     </div>
-    
+
     <div class="footer-bottom">
-      <p class="copyright">© {{ new Date().getFullYear() }} EVO FUN. All rights reserved.</p>
+      <p class="copyright">
+        © {{ new Date().getFullYear() }} EVO FUN. All rights reserved.
+      </p>
       <div class="social-links">
         <a href="#" class="social-link">Telegram</a>
         <a href="#" class="social-link">TikTok</a>
@@ -38,13 +39,13 @@
 .footer-logo {
   flex: 1;
   min-width: 250px;
-  
+
   .logo {
     font-size: 24px;
     font-weight: 700;
     margin-bottom: 12px;
   }
-  
+
   .tagline {
     color: rgba($light-text, 0.7);
     font-size: 14px;
@@ -71,12 +72,12 @@
 .social-links {
   display: flex;
   gap: 20px;
-  
+
   .social-link {
     color: rgba($light-text, 0.7);
     text-decoration: none;
     transition: color $transition-speed $transition-ease;
-    
+
     &:hover {
       color: $primary-color;
     }
@@ -84,17 +85,18 @@
 }
 
 @media (max-width: $tablet) {
-  .footer-content, .footer-bottom {
+  .footer-content,
+  .footer-bottom {
     flex-direction: column;
     text-align: center;
   }
-  
+
   .footer-links {
     justify-content: center;
   }
-  
+
   .link-group {
     text-align: center;
   }
 }
-</style> 
+</style>

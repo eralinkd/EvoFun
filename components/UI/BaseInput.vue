@@ -21,35 +21,35 @@
 const props = defineProps({
   id: {
     type: String,
-    required: true
+    required: true,
   },
   modelValue: {
     type: [String, Number],
-    default: ''
+    default: "",
   },
   label: {
     type: String,
-    default: ''
+    default: "",
   },
   placeholder: {
     type: String,
-    default: ''
+    default: "",
   },
   type: {
     type: String,
-    default: 'text'
+    default: "text",
   },
   disabled: {
     type: Boolean,
-    default: false
+    default: false,
   },
   error: {
     type: String,
-    default: ''
-  }
+    default: "",
+  },
 });
 
-defineEmits(['update:modelValue']);
+defineEmits(["update:modelValue"]);
 </script>
 
 <style scoped lang="scss">
@@ -82,23 +82,23 @@ defineEmits(['update:modelValue']);
   border-radius: 8px;
   background-color: rgba($dark-background, 0.2);
   color: $light-text;
-  transition: border-color $transition-speed $transition-ease, 
-              box-shadow $transition-speed $transition-ease;
+  transition: border-color $transition-speed $transition-ease,
+    box-shadow $transition-speed $transition-ease;
 
   &:focus {
     outline: none;
     border-color: $primary-color;
     box-shadow: 0 0 0 3px rgba($primary-color, 0.3);
   }
-  
+
   &::placeholder {
     color: rgba($light-text, 0.5);
   }
-  
+
   &.has-error {
     border-color: #f44336;
   }
-  
+
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
@@ -110,4 +110,4 @@ defineEmits(['update:modelValue']);
   font-size: 12px;
   color: #f44336;
 }
-</style> 
+</style>

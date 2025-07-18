@@ -1,26 +1,28 @@
 <template>
   <div>
     <div class="hero-banner">
-          <div class="hero-content">
-      <h1 class="hero-title">Welcome to EVO FUN!</h1>
-      <p class="hero-subtitle">Play your favorite games and try your luck</p>
-      
-      <div v-if="userStore.isAuthenticated()" class="user-welcome">
-        <p class="welcome-text">Welcome back, {{ userStore.nickName || 'User' }}!</p>
-        <div class="action-buttons">
+      <div class="hero-content">
+        <h1 class="hero-title">Welcome to EVO FUN!</h1>
+        <p class="hero-subtitle">Play your favorite games and try your luck</p>
+
+        <div v-if="userStore.isAuthenticated()" class="user-welcome">
+          <p class="welcome-text">
+            Welcome back, {{ userStore.nickName || "User" }}!
+          </p>
+          <div class="action-buttons">
+            <UIBaseButton @click="handlePlayNow">Play now</UIBaseButton>
+            <NuxtLink to="/profile">
+              <UIBaseButton class="profile-btn">View Profile</UIBaseButton>
+            </NuxtLink>
+          </div>
+        </div>
+
+        <div v-else class="guest-actions">
           <UIBaseButton @click="handlePlayNow">Play now</UIBaseButton>
-          <NuxtLink to="/profile">
-            <UIBaseButton class="profile-btn">View Profile</UIBaseButton>
-          </NuxtLink>
         </div>
       </div>
-      
-      <div v-else class="guest-actions">
-        <UIBaseButton @click="handlePlayNow">Play now</UIBaseButton>
-      </div>
     </div>
-    </div>
-    
+
     <ImageGallery id="main-images-gallery" />
   </div>
 </template>
@@ -33,9 +35,9 @@ const router = useRouter();
 
 const handlePlayNow = () => {
   if (userStore.isAuthenticated()) {
-    router.push('/games');
+    router.push("/games");
   } else {
-    router.push('/login');
+    router.push("/login");
   }
 };
 </script>

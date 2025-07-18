@@ -1,16 +1,16 @@
-import { createNotivue } from 'notivue'
+import { createNotivue } from "notivue";
 
 export default defineNuxtPlugin(({ vueApp }) => {
   const notivue = createNotivue({
-    position: 'top-center',
+    position: "top-center",
     limit: 5,
     enqueue: true,
     notifications: {
       global: {
-        duration: 3000
-      }
-    }
-  })
+        duration: 3000,
+      },
+    },
+  });
 
-  vueApp.use(notivue)
-}) 
+  vueApp.use(notivue);
+});

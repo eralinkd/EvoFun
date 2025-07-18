@@ -103,8 +103,7 @@ const errors = reactive({
 });
 
 const validateForm = () => {
-  // Очищаем предыдущие ошибки
-  Object.keys(errors).forEach(key => {
+  Object.keys(errors).forEach((key) => {
     errors[key] = "";
   });
 
@@ -166,12 +165,11 @@ const handleRegister = async () => {
   }
 
   try {
-    // Подготавливаем данные для отправки (исключаем confirmPassword)
     const { confirmPassword, ...registerData } = form;
-    
+
     await authStore.register(registerData);
   } catch (error) {
-    // Ошибка уже обработана в store
+    console.log(error);
   }
 };
 </script>
@@ -238,4 +236,4 @@ const handleRegister = async () => {
     font-size: 1.75rem;
   }
 }
-</style> 
+</style>
